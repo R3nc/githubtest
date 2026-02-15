@@ -13,6 +13,10 @@ class Profile(BaseModel):
     address: str
     id: int
 
+@app.get("/")
+def create():
+    return{"missing!": "error"}
+
 @app.post("/create-profile/{user_id}")#here checks the user_id
 def create(user_id: int, data: Profile):
     my_database[id] = user_id
@@ -38,6 +42,8 @@ def update(user_id: int, data: Profile):
     else:
         {"user_id": "found"}
 
-
+@app.get("/profiles")#gets all the available profiles
+def get_all_profiles():
+    return{"profiles": my_database, "count": len(my_database)}
 
 
